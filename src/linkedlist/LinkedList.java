@@ -94,9 +94,6 @@ public class LinkedList<E> {
         return (E) current.getValue();
     }
 
-
-
-
     public void validateIndex(int i) {
         if (i < 0 || i >= size) {
             throw new IndexOutOfBoundsException("Invalid index");
