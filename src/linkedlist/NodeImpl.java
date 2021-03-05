@@ -20,17 +20,11 @@ public class NodeImpl<E> implements Node{
     }
 
     public Node getNext() {
-        if (!hasNext()){
-            ;
-        }
 
         return _next;
     }
 
     public Node getPrevious() {
-        if (!hasPrevious()) {
-            ;
-        }
 
         return _previous;
     }
