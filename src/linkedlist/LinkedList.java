@@ -33,6 +33,41 @@ public class LinkedList<E> {
         }
     }
 
+    //Removes the first instance of an element in a Linked List
+    public boolean remove (E element) throws Exception {
+        if (isEmpty()) {
+            throw new Exception("Error while removing element - list is Empty!");
+        }
+        Node current = head;
+
+        if (current.getValue() == element) {
+            head = current.getNext();
+            head.setPrevious(null);
+            size--;
+            return true;
+        }
+
+        if (tail.getValue() == element) {
+            tail = tail.getPrevious();
+            tail.setNext(null);
+            size--;
+            return true;
+        }
+
+        while(current.getValue() != element) {
+            if (current.getNext() == null || current == null) {
+                return false;
+            }
+            current = current.getNext();
+        }
+
+        current.getPrevious().setNext(current.getNext());
+        current.getNext().setPrevious(current.getPrevious());
+        size--;
+        return true;
+
+    }
+
     public void insert(int index, E element) {
         if (index > size) {
             validateIndex(index);
@@ -112,6 +147,16 @@ public class LinkedList<E> {
         }
         return list;
     }
-
-
+    
+    public String reverseToString() {
+        String list = "";
+        Node current = tail;
+        while (current != null) {
+            if (current.getPrevious() == null)
+                list += current.getValue();
+            else
+                list += current.getValue() + " <--> ";
+            current = current.getPrevious();}
+        return list;
+        }
 }
